@@ -1,8 +1,10 @@
-import java.util.Stack;
+import java.util.Scanner;
 
 public class Test {
+    private static Scanner inputScanner = new Scanner(System.in);
+    private static StackReferenceBased staticStack = new StackReferenceBased();
     public static void main(String[] args) {
-        
+        stackManagerDisplay(-1);
     }
 
     //accepts a string as input and uses a Stack to check if the braces “{}“ in the String are balanced.
@@ -24,6 +26,7 @@ public class Test {
         }
         return Stack.isEmpty();
     }
+    
     private static void testDisplayStack(){
         StackReferenceBased Stack = new StackReferenceBased();
         Stack.push("Hello");
@@ -38,6 +41,7 @@ public class Test {
         
         Stack.displayStack();
     }
+    
     private static void testIsBalanced(){
         System.out.println(isBalanced(""));
         System.out.println(isBalanced("{"));
@@ -123,5 +127,59 @@ public class Test {
                         "    }\r\n" + //
                         "  }\r\n" + //
                         "}  // end StackReferenceBased"));
+    }
+    /*Create a menu driven program in the test class that displays the following menu to the user
+and reads their selection using the Scanner class.
+Welcome to StackTest! Please select a number from the list.
+1. Push a string on to the stack
+2. Pop a string from the stack
+3. Peek at the top of the stack
+4. Empty the stack
+5. Check if a string has balanced brackets.
+6. Quit the program
+After each selection the stack should be updated and displayed so the user can see the
+contents. If the user selects the balanced brackets option your program should allow them
+to enter a string (Scanner class again) and use a stack to determine if the brackets are
+balanced. */
+    private static void stackManagerDisplay(int selection){
+        
+        switch(selection){
+            case 1:
+                System.out.print("Input string: ");
+                staticStack.push(inputScanner.nextLine());
+                break;
+            case 2:
+                staticStack.pop();
+                break;
+            case 3:
+                System.out.println(staticStack.peek());
+                break;
+            case 4:
+                while(!staticStack.isEmpty()){
+                    staticStack.pop();
+                }
+                break;
+            case 5:
+                System.out.print("Input String:");
+                System.out.println(isBalanced(inputScanner.nextLine()));
+                break;
+        }
+        System.out.println("Stack:");
+        staticStack.displayStack();
+        System.out.println("Welcome to StackTest! Please select a number from the list.\r\n" + //
+                            "1. Push a string on to the stack\r\n" + //
+                            "2. Pop a string from the stack\r\n" + //
+                            "3. Peek at the top of the stack\r\n" + //
+                            "4. Empty the stack\r\n" + //
+                            "5. Check if a string has balanced brackets.\r\n" + //
+                            "6. Quit the program");
+        if(selection != 6){
+            int i = inputScanner.nextInt();
+            inputScanner.nextLine();
+            stackManagerDisplay(i);
+        }
+        
+
+        
     }
 }
