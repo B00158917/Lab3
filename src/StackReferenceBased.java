@@ -67,4 +67,13 @@ public class StackReferenceBased implements StackInterface
 //============================================================================
 //============================================================================
 
+  //displays or prints out the stack vertically
+  public void displayStack(){
+    if(top != null){
+      System.out.print("Top:");
+      for(Node n = top; n != null; n = n.getNext()){
+        System.out.println(n.getItem());
+      }
+    }
+  }
 }  // end StackReferenceBased
