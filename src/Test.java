@@ -2,7 +2,30 @@ import java.util.Stack;
 
 public class Test {
     public static void main(String[] args) {
-        /*StackReferenceBased Stack = new StackReferenceBased();
+        
+    }
+
+    //accepts a string as input and uses a Stack to check if the braces “{}“ in the String are balanced.
+    private static boolean isBalanced(String testString){
+        StackReferenceBased Stack = new StackReferenceBased();
+        for(char c : testString.toCharArray()){
+            switch(c){
+                case '{':
+                    Stack.push(Braces.OpenCurl);
+                    break;
+                case '}':
+                    if(Stack.isEmpty()){
+                        return false;
+                    }else{
+                        Stack.pop();
+                    }
+                    break;
+            }
+        }
+        return Stack.isEmpty();
+    }
+    private static void testDisplayStack(){
+        StackReferenceBased Stack = new StackReferenceBased();
         Stack.push("Hello");
         Stack.push("World");
         Stack.push("Programmed");
@@ -13,8 +36,9 @@ public class Test {
         Stack.push("To");
         Stack.push("Feel");
         
-        Stack.displayStack();*/
-
+        Stack.displayStack();
+    }
+    private static void testIsBalanced(){
         System.out.println(isBalanced(""));
         System.out.println(isBalanced("{"));
         System.out.println(isBalanced("}"));
@@ -99,25 +123,5 @@ public class Test {
                         "    }\r\n" + //
                         "  }\r\n" + //
                         "}  // end StackReferenceBased"));
-    }
-
-    //accepts a string as input and uses a Stack to check if the braces “{}“ in the String are balanced.
-    private static boolean isBalanced(String testString){
-        StackReferenceBased Stack = new StackReferenceBased();
-        for(char c : testString.toCharArray()){
-            switch(c){
-                case '{':
-                    Stack.push(Braces.OpenCurl);
-                    break;
-                case '}':
-                    if(Stack.isEmpty()){
-                        return false;
-                    }else{
-                        Stack.pop();
-                    }
-                    break;
-            }
-        }
-        return Stack.isEmpty();
     }
 }
